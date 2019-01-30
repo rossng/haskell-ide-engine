@@ -7,11 +7,16 @@ trigger:
 - master
 
 pool:
-  vmImage: 'vs2017-win2016'
+  vmImage: 'win1803'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- powershell: Invoke-WebRequest -Uri $url -OutFile $output
+  displayName: 'Download Haskell Platform'
+  env:
+    url: "https://haskell.org/platform/download/8.6.2/HaskellPlatform-8.6.2-core-x86_64-setup.exe"
+    output: "haskell-platform.exe"
+- powershell: .\haskell-platform.exe /S
+  displayName: 'Install Haskell Platform'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
