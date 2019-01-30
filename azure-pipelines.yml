@@ -11,7 +11,7 @@ pool:
 
 steps:
 - powershell:
-    Invoke-WebRequest -Uri "https://haskell.org/platform/download/8.6.3/HaskellPlatform-8.6.3-core-x86_64-setup.exe" -OutFile "haskell-platform.exe"
+    Invoke-WebRequest -Uri "http://haskell.org/platform/download/8.6.3/HaskellPlatform-8.6.3-core-x86_64-setup.exe" -OutFile "haskell-platform.exe"
   displayName: 'Download Haskell Platform'
 - powershell: .\haskell-platform.exe /S
   displayName: 'Install Haskell Platform'
