@@ -33,7 +33,7 @@ function main($requested_versions) {
 function build($version, $major) {
     echo "Building HIE for GHC $version"
     stack --stack-yaml=stack-$version.yaml install happy
-    stack --stack-yaml=stack-$version.yaml install
+    stack --stack-yaml=stack-$version.yaml install --ghc-options -j
     cp "$stackbindir\hie.exe" "$stackbindir\hie-$version.exe"
     cp "$stackbindir\hie.exe" "$stackbindir\hie-$major.exe"
 
