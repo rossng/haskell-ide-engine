@@ -12,11 +12,10 @@ pool:
 steps:
 - powershell: Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
   displayName: 'Install Chocolatey'
-- powershell:
-    Invoke-WebRequest -Uri "http://haskell.org/platform/download/8.6.3/HaskellPlatform-8.6.3-core-x86_64-setup.exe" -OutFile "haskell-platform.exe"
-  displayName: 'Download Haskell Platform'
-- powershell: .\haskell-platform.exe /S
-  displayName: 'Install Haskell Platform'
+- powershell: choco install haskell-stack
+  displayName: 'Install Haskell stack'
+- powershell: .\build-all.ps1 8.2.2
+  displayName: 'Build haskell-ide-engine'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
